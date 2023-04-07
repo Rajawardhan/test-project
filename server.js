@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/oasis-diary",{
+mongoose.connect("mongodb+srv://raj-atlas:test1234@raj-mern.8afcmuj.mongodb.net/?retryWrites=true&w=majority",{
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
