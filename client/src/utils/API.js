@@ -7,14 +7,14 @@ export default {
 
   // imported from App.js (check for a valid token)
   checkValidToken: function (token) {
-    return axios.post('/isValidToken', null, {
+    return axios.post('https://raj-test2.onrender.com/isValidToken', null, {
       headers: { 'x-auth-token': token },
     });
   },
 
   // imported from App js (after checking the token is valid,fetching the user information)
   authenticateUser: function (token) {
-    return axios.post('/', { headers: { 'x-auth-token': token } });
+    return axios.post('https://raj-test2.onrender.com/', { headers: { 'x-auth-token': token } });
   },
 
   // imported login page(End Point to pass the user entered information to backend and to check the login validations)
