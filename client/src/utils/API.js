@@ -1,14 +1,5 @@
 import axios from 'axios';
 
-// CHANGE TO YOUR BACKEND URL
-const backendUrl = "https://raj-test2.onrender.com/"
-
-// BASE URL (backend)
-const api = axios.create({
-  baseURL: backendUrl
-})
-
-
 
 export default {
 
@@ -16,24 +7,24 @@ export default {
 
   // imported from App.js (check for a valid token)
   checkValidToken: function (token) {
-    return api.post('/isValidToken', null, {
+    return axios.post('/isValidToken', null, {
       headers: { 'x-auth-token': token },
     });
   },
 
   // imported from App js (after checking the token is valid,fetching the user information)
   authenticateUser: function (token) {
-    return api.post('/', { headers: { 'x-auth-token': token } });
+    return axios.post('/', { headers: { 'x-auth-token': token } });
   },
 
   // imported login page(End Point to pass the user entered information to backend and to check the login validations)
   loginRes: function (loginUser) {
-    return api.post('/api/login', loginUser);
+    return axios.post('https://raj-test2.onrender.com/api/login', loginUser);
   },
 
   // imported from Signup page(End Point to pass the user signed up info to backend and store it)
   SignUpRes: function (newUser) {
-    return api.post('/api/signup', newUser);
+    return axios.post('https://raj-test2.onrender.com/api/signup', newUser);
   },
 
   
@@ -41,24 +32,24 @@ export default {
   
   //  check Journal entry for the the particular entry date
   checkAJournalEntry: function (entryDate, userId) {
-    return api.get('/api/notes/entrydate/' + entryDate, {
+    return axios.get('https://raj-test2.onrender.com/api/notes/entrydate/' + entryDate, {
       params: { userId },
     });
   },
 
   // Create journal entry
   createJournalEntry: function (journalEntry) {
-    return api.post('/api/notes', journalEntry);
+    return axios.post('https://raj-test2.onrender.com/api/notes', journalEntry);
   },
 
   // Get one entry by noteId and userId
   getOneJournalEntry: function (noteId, userId) {
-    return api.get('/api/notes/' + noteId, { params: { userId } });
+    return axios.get('https://raj-test2.onrender.com/api/notes/' + noteId, { params: { userId } });
   },
 
   // Update one entry by noteId, userId
   updateOneJournalEntry: function (noteId, userId, updatedEntry) {
-    return api.put('/api/notes/' + noteId, updatedEntry, {
+    return axios.put('https://raj-test2.onrender.com/api/notes/' + noteId, updatedEntry, {
       params: { userId },
     });
   },
@@ -66,13 +57,13 @@ export default {
 // check Journal entries based on search results for particular month
   checkASearchJournalEntry: function (month,year, userId) {
     console.log(' user id : ' + userId + "month :" +month +"year :" + year);
-    return api.get('/api/notes' ,{
+    return axios.get('https://raj-test2.onrender.com/api/notes' ,{
       params: { month,year,userId }
     });
   },
 
   // Delete one entry by noteId, userId
   removeOneJournalEntry: function (noteId, userId) {
-    return api.delete('/api/notes/' + noteId, { params: { userId } });
+    return axios.delete('https://raj-test2.onrender.com/api/notes/' + noteId, { params: { userId } });
   },
 };
