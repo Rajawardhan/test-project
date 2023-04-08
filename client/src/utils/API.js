@@ -4,7 +4,7 @@ import axios from 'axios';
 const backendUrl = "https://raj-test2.onrender.com/"
 
 // BASE URL (backend)
-const api = axios.create({
+const axios = axios.create({
   baseURL: backendUrl
 })
 
