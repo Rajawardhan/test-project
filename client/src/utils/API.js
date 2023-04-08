@@ -1,5 +1,14 @@
 import axios from 'axios';
 
+// CHANGE TO YOUR BACKEND URL
+const backendUrl = "https://raj-test2.onrender.com/"
+
+// BASE URL (backend)
+const api = axios.create({
+  baseURL: backendUrl
+})
+
+
 
 export default {
 
